@@ -1,0 +1,8 @@
+.codelite
+c-tests.workspace
+*.mk
+*.project
+*/Debug
+c-tests.cbp
+c-tests.depend
+Makefile
