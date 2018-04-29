@@ -12,6 +12,13 @@ int Do_Something( int x ) {
 	return x + some_other_value;
 }
 
+/**
+ * This is the clean code way, by using meaningful names
+ *
+ * @brief
+ * @param subtotal
+ * @return
+ */
 int calculate_grand_total( int subtotal ) {
 	int grand_total;
 	grand_total = subtotal + SERVICE_CHARGE;

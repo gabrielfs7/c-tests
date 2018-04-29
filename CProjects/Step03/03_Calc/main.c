@@ -32,7 +32,7 @@ int main(int argc, char **argv) {
 
 
 	subtotal = 200;
-	//TAXRATE_CONST = 0.2;			// cannot redefine a true constant!
+	// TAXRATE_CONST = 0.2;			// cannot redefine a true constant!
 	tax = subtotal * TAXRATE_CONST;
 	grandtotal = subtotal + tax;
 
