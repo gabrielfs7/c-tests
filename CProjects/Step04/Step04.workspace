@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<CodeLite_Workspace Name="Step04" Database="./Step04.tags">
+<CodeLite_Workspace Name="Step04" Database="./Step04.tags" Version="10.0.0">
   <Project Name="01_TestAge" Path="01_TestAge/01_TestAge.project" Active="No"/>
   <Project Name="02_TestAge" Path="02_TestAge/02_TestAge.project" Active="No"/>
-  <Project Name="03_GetInput" Path="03_GetInput/03_GetInput.project" Active="Yes"/>
-  <Project Name="04_Readln" Path="04_Readln/04_Readln.project" Active="No"/>
+  <Project Name="03_GetInput" Path="03_GetInput/03_GetInput.project" Active="No"/>
+  <Project Name="04_Readln" Path="04_Readln/04_Readln.project" Active="Yes"/>
   <Project Name="00_Operators" Path="00_Operators/00_Operators.project" Active="No"/>
   <Project Name="05_LogicalOperators" Path="05_LogicalOperators/05_LogicalOperators.project" Active="No"/>
   <BuildMatrix>

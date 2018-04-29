@@ -11,7 +11,7 @@ int main(int argc, char **argv) {
 	if (age == 0) {
 		printf("You entered an invalid age, so your bonus cannot be calculated.\n");
 	} else {
-		if (age > 45) {
+		if (age >= 45) {
 			bonus = 1000;
 		} else {
 			bonus = 500;
