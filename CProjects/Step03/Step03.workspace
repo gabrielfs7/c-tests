@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<CodeLite_Workspace Name="Step03" Database="./Step03.tags">
+<CodeLite_Workspace Name="Step03" Database="./Step03.tags" Version="10.0.0">
   <Project Name="01_Calc" Path="01_Calc/01_Calc.project" Active="No"/>
   <Project Name="02_Calc" Path="02_Calc/02_Calc.project" Active="No"/>
-  <Project Name="03_Calc" Path="03_Calc/03_Calc.project" Active="No"/>
-  <Project Name="04_NamingConventions" Path="04_NamingConventions/04_NamingConventions.project" Active="Yes"/>
+  <Project Name="03_Calc" Path="03_Calc/03_Calc.project" Active="Yes"/>
+  <Project Name="04_NamingConventions" Path="04_NamingConventions/04_NamingConventions.project" Active="No"/>
   <BuildMatrix>
     <WorkspaceConfiguration Name="Debug" Selected="yes">
       <Project Name="01_Calc" ConfigName="Debug"/>
