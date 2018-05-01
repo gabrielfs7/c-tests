@@ -50,5 +50,11 @@ int main(int argc, char **argv) {
         printf("- %s\n", str2);
     }
 
+    /**
+     * Here you can see how pointers refer to same memory address
+     */
+    printf("\n%d %d %d %d %d %d %d\n", &str2[0], &str2[1], &str2[2], &str2[3], &str2[4], &str2[5], &str2[6]);
+    printf("\n%d %d %d %d %d %d %d\n", str2, str2 + 1, str2 + 2, str2 + 3, str2 + 4, str2 + 5, str2 + 6);
+
 	return 0;
 }
