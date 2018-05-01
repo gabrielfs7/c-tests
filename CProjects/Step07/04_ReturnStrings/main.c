@@ -9,6 +9,17 @@ char greeting[MAXSTRLEN];
 /**
  * This will store in the "HEAP" memory, which means, we need dynamic memory allocation.
  *
+ * This is necessary because we want to return a variable created inside the function.
+ *
+ * For this we need to use "malloc", which will keep the variable in the memory after exiting the function.
+ *
+ * OBS:
+ *
+ * "So this is necessary for safety reasons and because C does not allow us to simple returning a new variable
+ * without overring memory."
+ *
+ * Good content to read: http://net-informations.com/faq/net/stack-heap.htm
+ *
  * @brief
  * @param astring
  * @return
@@ -17,7 +28,7 @@ char * string_function_dynamic(char *astring) {
 	char *s;
 
     /**
-     * "malloc()" will alocatem memory in the 'HEAP', which means that memory
+     * "malloc()" will alocatem memory in the 'HEAP', which means the variable "s"
      * will continue existing even after exiting the function.
      */
 	s = (char*)malloc(MAXSTRLEN); // The cast (char*) may be needed by some compilers
