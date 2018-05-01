@@ -1,3 +1,1 @@
-./Debug/main.c.o: main.c malloc.h
-
-malloc.h:
+./Debug/main.c.o: main.c
