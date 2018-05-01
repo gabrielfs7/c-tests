@@ -8,11 +8,11 @@ char chararray2[] = "world";
 
 int main(int argc, char **argv) {
 	int i;
-	
+
 	for (i = 0; i < 5; i++) {
 		intarray[i] = ((i + 1) * 100); // note use of parentheses here!
 	}
-	
+
 	printf( "--- for loop ---\n");
 	for (i = 0; i < 5; i++) {
 		printf("%d\n", intarray[i]);
@@ -34,15 +34,14 @@ int main(int argc, char **argv) {
 
 	printf( "--- while loop (i = 5) ---\n");
 	i = 5;
-	while( i < 5) {
-		printf("%d\n", intarray[i]);
-		i++;
+	while( i > 0) {
+		printf("%d\n", intarray[--i]);
 	}
 
 	printf( "--- do..while loop (i = 5) ---\n");
 	i = 5;
 	do {
-		printf("%d\n", intarray[i]);
+		printf("[%i] -> %d\n", i, intarray[i]);
 		i++;
 	} while( i < 10);
 

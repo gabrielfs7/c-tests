@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<CodeLite_Workspace Name="Step05" Database="./Step05.tags">
+<CodeLite_Workspace Name="Step05" Database="./Step05.tags" Version="10.0.0">
   <Project Name="01_Functions" Path="01_Functions/01_Functions.project" Active="No"/>
   <Project Name="02_SwitchCase" Path="02_SwitchCase/02_SwitchCase.project" Active="Yes"/>
   <BuildMatrix>

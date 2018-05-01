@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<CodeLite_Workspace Name="Step06" Database="./Step06.tags">
+<CodeLite_Workspace Name="Step06" Database="./Step06.tags" Version="10.0.0">
   <Project Name="01_Arrays" Path="01_Arrays/01_Arrays.project" Active="No"/>
-  <Project Name="02_BreakAndContinue" Path="02_BreakAndContinue/02_BreakAndContinue.project" Active="Yes"/>
-  <Project Name="03_MultiDimensionArrays" Path="03_MultiDimensionArrays/03_MultiDimensionArrays.project" Active="No"/>
+  <Project Name="02_BreakAndContinue" Path="02_BreakAndContinue/02_BreakAndContinue.project" Active="No"/>
+  <Project Name="03_MultiDimensionArrays" Path="03_MultiDimensionArrays/03_MultiDimensionArrays.project" Active="Yes"/>
   <BuildMatrix>
     <WorkspaceConfiguration Name="Debug" Selected="yes">
       <Project Name="01_Arrays" ConfigName="Debug"/>

@@ -31,14 +31,12 @@ void findchartype2( char c ) {
 		case '9':
 			chartype = "Number";
 			break;
-			/*
 		case 'A' ... 'Z':
 			chartype = "Uppercase Letter";
 			break;
 		case 'a' ... 'z':
 			chartype = "Lowercase Letter";
 			break;
-			 */
 		default:
 			chartype = "Character";
 			break;
@@ -81,17 +79,15 @@ void findchartype( int i ) {
 		case 57:
 			chartype = "Number";
 			break;
-			/*
-				// These use ranges (values between 65 and 90; values between 97 and 122)
-				// Ranges in Switch/case are an extension to standard C and this syntax
-				// is not supported by all C compilers
-			case 65 ... 90:
-				chartype = "Uppercase Letter";
-				break;
-			case 97 ... 122:
-				chartype = "Lowercase Letter";
-				break;
-			 */
+        // These use ranges (values between 65 and 90; values between 97 and 122)
+        // Ranges in Switch/case are an extension to standard C and this syntax
+        // is not supported by all C compilers
+        case 65 ... 90:
+            chartype = "Uppercase Letter";
+            break;
+        case 97 ... 122:
+            chartype = "Lowercase Letter";
+            break;
 		default:
 			chartype = "Character";
 			break;
@@ -107,7 +103,9 @@ void showascii() {
 		printf("%d = %c\t\t[%s]\n", i, i, chartype);
 	}
 	printf( "\nPress Enter to continue...\n" );
-	c = getchar();
+
+    c = getchar(); // Only necessary to require user to press 'enter' key
+
 	for( i = 0; i <= 127; i++) {
 		findchartype2( i );
 		printf("%d = %c\t\t[%s]\n", i, i, chartype);

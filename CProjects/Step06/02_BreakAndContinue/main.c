@@ -11,13 +11,13 @@ void whilebreak() {
 		c = chararray[i];
 		printf("[%d]='%c' ", i, c);
 		if (c == '!'){
-			str[i] = '\0';
+			str[i] = '\0'; // replace ! for null
 			break;
 		}
 		str[i] = c;
 		i++;
 	}
-	printf("\nAfter while loop, str='%s'", str);
+	printf("\n\n\nAfter while loop, str='%s'\n\n", str);
 }
 
 void forbreak() {
@@ -25,7 +25,7 @@ void forbreak() {
 	char str[50];
 	char c;
 	// for loop #1 - encrypt string
-	for( i = 0; i < 50; i++) {		
+	for( i = 0; i < 50; i++) {
 		c = chararray[i];
 		if (c == ' ') {
 			str[i] = c;
@@ -34,21 +34,21 @@ void forbreak() {
 		if (c == '!') {
 			str[i] = '\0';
 			break;
-		}		
+		}
 		str[i] = chararray[i] + 1;
 	}
 	printf("Encrypted string is '%s'\n", str);
-	
+
 	// for loop #2 - decrypt string
-	for( i = 0; i < 50; i++) {		
+	for( i = 0; i < 50; i++) {
 		c = str[i];
-		if (c == ' ') {			
+		if (c == ' ') {
 			continue;
 		}
 		if (c == '\0') {
 			break;
 		}
-		
+
 		str[i] = str[i] - 1;
 	}
 	printf("Decrypted string is '%s'\n", str);
