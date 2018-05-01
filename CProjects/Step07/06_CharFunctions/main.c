@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <ctype.h>
+#include <string.h>
 
 char mystring[] = "On the 2nd day of Christmas my true love gave to me, 2 turtle doves and a partridge in a pear tree.";
 
@@ -15,12 +16,15 @@ void chartypes() {
 	int numCtrl = 0;
 	int numUnknown = 0;
 	int lengthOfStr;
+
 	lengthOfStr = strlen(mystring);
-	
+
 	for (i = 0; i < lengthOfStr; i++ ) {
 		c = mystring[i];
+
 		if(isalpha(c)) {
 			numLetters++;
+
 			if (isupper(c)) {
 				printf("'%c' [uppercase character]\n", c);
 				numUpCase++;
@@ -41,7 +45,7 @@ void chartypes() {
 			printf("'%c' [ctrl]\n", c);
 			numCtrl++;
 		} else {
-			printf("'%c' [unknown]\n", c);	
+			printf("'%c' [unknown]\n", c);
 			numUnknown++;
 		}
 	}
@@ -49,12 +53,26 @@ void chartypes() {
 	printf( "%d digits, %d ctrl, %d punctuation characters, %d spaces and %d unclassified characters.\n", numDigits, numCtrl, numPunct, numSpaces, numUnknown );
 }
 
-int main(int argc, char **argv) {
-	if(isalpha('x')){ 		// try delimiting x as a string instead of a char: "x"
-		printf("'x' is a letter\n");
-	}else{
-		printf("'x' is not a letter\n");
+void is_a_letter(char letter)
+{
+    if (isalpha(letter)) {
+		printf("%c is a letter \n", letter);
+	} else {
+		printf("%c is not a letter\n", (char)letter);
 	}
-	chartypes();
+}
+
+int main(int argc, char **argv) {
+    is_a_letter('x');
+
+    /**
+     * This will cause an warning, because a string is not a char, but is accepted.
+     *
+     * AVOID IT!!!
+     */
+    is_a_letter("x");
+
+    chartypes();
+
 	return 0;
 }
