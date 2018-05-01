@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<CodeLite_Workspace Name="Step07" Database="./Step07.tags">
+<CodeLite_Workspace Name="Step07" Database="./Step07.tags" Version="10.0.0">
   <Project Name="01_StringIndex" Path="01_StringIndex/01_StringIndex.project" Active="No"/>
-  <Project Name="02_StringsAndPointers" Path="02_StringsAndPointers/02_StringsAndPointers.project" Active="No"/>
+  <Project Name="02_StringsAndPointers" Path="02_StringsAndPointers/02_StringsAndPointers.project" Active="Yes"/>
   <Project Name="03_StringsAndAddresses" Path="03_StringsAndAddresses/03_StringsAndAddresses.project" Active="No"/>
-  <Project Name="04_ReturnStrings" Path="04_ReturnStrings/04_ReturnStrings.project" Active="Yes"/>
+  <Project Name="04_ReturnStrings" Path="04_ReturnStrings/04_ReturnStrings.project" Active="No"/>
   <Project Name="05_StringFunctions" Path="05_StringFunctions/05_StringFunctions.project" Active="No"/>
   <Project Name="06_CharFunctions" Path="06_CharFunctions/06_CharFunctions.project" Active="No"/>
   <BuildMatrix>
