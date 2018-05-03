@@ -3,48 +3,62 @@
 
 #define NUMBER_OF_CDS 4
 
+typedef char Str50[50];
+
 struct cd {
-	char name[50];
-	char artist[50];
+	Str50 name;
+	Str50 artist;
 	int trackcount;
 	int rating;
 };
 
 struct cd cd_collection[NUMBER_OF_CDS];
 
-void create_cdcollection() {
-	strcpy(cd_collection[0].name, "Great Hits");
-	strcpy(cd_collection[0].artist, "Polly Darton");
-	cd_collection[0].trackcount = 20;
-	cd_collection[0].rating = 10;
-
-	strcpy(cd_collection[1].name, "Mega Songs");
-	strcpy(cd_collection[1].artist, "Lady Googoo");
-	cd_collection[1].trackcount = 18;
-	cd_collection[1].rating = 7;
-
-	strcpy(cd_collection[2].name, "The Best Ones");
-	strcpy(cd_collection[2].artist, "The Warthogs");
-	cd_collection[2].trackcount = 24;
-	cd_collection[2].rating = 4;
-
-	strcpy(cd_collection[3].name, "Songs From The Shows");
-	strcpy(cd_collection[3].artist, "The Singing Swingers");
-	cd_collection[3].trackcount = 22;
-	cd_collection[3].rating = 9;
+void add_cd(
+    int index,
+    struct cd cd_collection[],
+    char name[],
+    char artist[],
+    int trackcount,
+    int rating
+) {
+    strcpy(cd_collection[index].name, name);
+	strcpy(cd_collection[index].artist, artist);
+	cd_collection[index].trackcount = trackcount;
+	cd_collection[index].rating = rating;
 }
 
-void display_cdcollection() {
+void create_cdcollection()
+{
+    add_cd(0, cd_collection, "Great Hits", "Polly Darton", 20, 10);
+    add_cd(1, cd_collection, "Mega Songs", "Lady Googoo", 18, 7);
+    add_cd(2, cd_collection, "The Best Ones", "The Warthogs", 24, 4);
+    add_cd(3, cd_collection, "Songs From The Shows", "The Singing Swingers", 22, 9);
+}
+
+void display_cdcollection()
+{
 	int i;
-	struct cd thiscd;
+	struct cd this_cd;
+
 	for (i = 0; i < NUMBER_OF_CDS; i++) {
-		thiscd = cd_collection[i];
-		printf("CD #%d: '%s' by %s has %d tracks. My rating = %d\n", i, thiscd.name, thiscd.artist, thiscd.trackcount, thiscd.rating);
+		this_cd = cd_collection[i];
+
+		printf(
+            "CD #%d: '%s' by %s has %d tracks. My rating = %d\n",
+            i,
+            this_cd.name,
+            this_cd.artist,
+            this_cd.trackcount,
+            this_cd.rating
+        );
 	}
 }
 
-int main(int argc, char **argv) {
+int main(int argc, char **argv)
+{
 	create_cdcollection();
 	display_cdcollection();
+
 	return 0;
 }
