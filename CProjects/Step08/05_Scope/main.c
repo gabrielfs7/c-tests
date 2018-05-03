@@ -6,7 +6,15 @@ char b[MAXSTRLEN];
 char teststring[] = "Hello world";
 int num = 10;
 
-void addnumbers(){
+void addnumbers()
+{
+    /**
+     *
+     * Static variables store the values across the function call.
+     *
+     * So each time this function is called, variable 'x' will be incremented.
+     *
+     */
 	static int x = 0;
 	int y = 0;
 	x++;
@@ -37,9 +45,9 @@ int main(int argc, char **argv) {
 		printf( "'%s' found in '%s' at index #%d\n", b, teststring, stringpos);
 	}else{
 		printf( "'%s' not found in '%s'\n", b, teststring);
-	} 
+	}
 	*/
-	printf( findsubstring(b, teststring) );
+	printf("Result: \n\n %s", findsubstring(b, teststring));
 	localnum();
 	globalnum();
 	addnumbers();

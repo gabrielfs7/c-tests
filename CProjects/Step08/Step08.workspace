@@ -2,9 +2,9 @@
 <CodeLite_Workspace Name="Step08" Database="./Step08.tags" Version="10.0.0">
   <Project Name="01_Structs" Path="01_Structs/01_Structs.project" Active="No"/>
   <Project Name="02_Typedefs" Path="02_Typedefs/02_Typedefs.project" Active="No"/>
-  <Project Name="03_Enums" Path="03_Enums/03_Enums.project" Active="Yes"/>
+  <Project Name="03_Enums" Path="03_Enums/03_Enums.project" Active="No"/>
   <Project Name="04_HeaderFiles" Path="04_HeaderFiles/04_HeaderFiles.project" Active="No"/>
-  <Project Name="05_Scope" Path="05_Scope/05_Scope.project" Active="No"/>
+  <Project Name="05_Scope" Path="05_Scope/05_Scope.project" Active="Yes"/>
   <BuildMatrix>
     <WorkspaceConfiguration Name="Debug" Selected="yes">
       <Project Name="01_Structs" ConfigName="Debug"/>

@@ -1,1 +1,1 @@
-./Debug/main.o ./Debug/mystring.o ./Debug/mystringutils.o   
+./Debug/mystring.c.o ./Debug/mystringutils.c.o ./Debug/main.c.o
