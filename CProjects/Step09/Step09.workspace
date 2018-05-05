@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<CodeLite_Workspace Name="Step09" Database="./Step09.tags">
+<CodeLite_Workspace Name="Step09" Database="./Step09.tags" Version="10.0.0">
   <Project Name="02_FileStats" Path="02_FileStats/02_FileStats.project" Active="No"/>
-  <Project Name="01_FileBasics" Path="01_FileBasics/01_FileBasics.project" Active="No"/>
-  <Project Name="03_FileSearchStr" Path="03_FileSearchStr/03_FileSearchStr.project" Active="Yes"/>
+  <Project Name="01_FileBasics" Path="01_FileBasics/01_FileBasics.project" Active="Yes"/>
+  <Project Name="03_FileSearchStr" Path="03_FileSearchStr/03_FileSearchStr.project" Active="No"/>
   <BuildMatrix>
     <WorkspaceConfiguration Name="Debug" Selected="yes">
       <Project Name="01_FileBasics" ConfigName="Debug"/>
