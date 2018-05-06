@@ -5,23 +5,23 @@
 #define filename "cd_database.bin"
 #define backupfilename "cd_database.bak"
 
-char getcommand() {
+char getcommand()
+{
 	char command[MAXSTRLEN];
 	int commandlen;
-	char c;
-	
+
 	commandlen = readln(command);
+
 	if (commandlen != 1) {
-		c = 'x';
-	} else {
-		c = command[0];
+		return 'x';
 	}
-	return c;
+
+    return command[0];
 }
 
 int main(int argc, char **argv) {
 	int keepgoing = 1;
-	
+
 	create_cdcollection();
 	while( keepgoing ) {
 		printf("\nEnter a command or 'q' to quit.");
