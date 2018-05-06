@@ -7,10 +7,11 @@
 
 // create a default CD collection in memory
 // EXERCISE: Instead of using this default data, load the data from the file on disk
-//			 if the file exists. If it doesn't exist, create it when the user starts 
+//			 if the file exists. If it doesn't exist, create it when the user starts
 //			 to enter data (i.e. to add the 1st CD record).
-void create_cdcollection() {
-	cd_collection = (CD*)malloc(sizeof(CD) * 4);
+void create_cdcollection()
+{
+	cd_collection = (CD*) malloc(sizeof(CD) * 4);
 	cdarraylen = 4;
 	strcpy(cd_collection[0].name, "Great Hits");
 	strcpy(cd_collection[0].artist, "Polly Darton");
@@ -34,25 +35,37 @@ void create_cdcollection() {
 }
 
 // return number of records in cd db file
-int number_of_records_in_db(char *filename) {
-	FILE *f;
+int number_of_records_in_db(char *filename)
+{
+	FILE *file_pointer;
 	int endpos;
 	int numrecs = 0;
-	
-	f = fopen(filename, "rb");
-	if (f == 0) {
+
+    // Open file to read binary
+	file_pointer = fopen(filename, "rb");
+
+
+	if (file_pointer == 0) {
 		printf( "Cannot open file: %s\n", filename);
 	} else {
-		fseek(f , 0 , SEEK_END);					// seek to end of file
-		endpos = ftell(f);							// get the current position (now at the end of the file)
-		numrecs = endpos / sizeof(CD);				// calculate number of records in file
-		fclose(f);
+        // seek to end of file
+		fseek(file_pointer , 0 , SEEK_END);
+
+        // get the current position (now at the end of the file)
+		endpos = ftell(file_pointer);
+
+        // calculate number of records in file
+		numrecs = endpos / sizeof(CD);
+
+		fclose(file_pointer);
 	}
+
 	return numrecs;
 }
 
 // set all fields of global cd record to "" or 0
-static void init_tempcd() {
+static void init_tempcd()
+{
 	// EXERCISE: How else might I assign an 'empty' string?
 	// Hint: Look at 04_ReturnStrings in Step 07
 	strcpy(tempcd.name, "");
@@ -65,7 +78,7 @@ static void init_tempcd() {
 static int getrating( char *ascore ) {
 	int intscore = atoi( ascore );			// This will be 0 if ascore cannot be converted to int
 	int returnval;
-	
+
 	if ((intscore < 1) || (intscore > 5)) {
 		returnval = 0;
 	} else {
@@ -83,10 +96,10 @@ static void readcd_data() {
 	int tracknum;
 	int ratingnum;
 	int slen = 0;
-	
+
 	init_tempcd();
 	// keep prompting until some data is entered (don't allow just a carriage-return)
-	// EXERCISE: 	Try rewriting using do..while loops. Think if you need to init slen to 0 
+	// EXERCISE: 	Try rewriting using do..while loops. Think if you need to init slen to 0
 	//				before each loop (as I have done below) if you use do..while?
 	while( slen == 0 ) {
 		printf("Enter CD Name\n> ");
@@ -127,25 +140,42 @@ static void readcd_data() {
 // modify data of record #cdnum in database
 static void change_cd(char *filename, int cdnum) {
 	// EXERCISE: Consider using return values, r, for error checking purposes
-	FILE *f;
+	FILE *file_pointer;
 	CD* cdptr;
 	size_t r;
-	
-	f = fopen(filename, "rb+");								// Open for read/write
-	if (f == 0) {
+
+    // Open for read/write mode
+	file_pointer = fopen(filename, "rb+");
+
+	if (file_pointer == 0) {
 		printf( "Cannot open file: %s\n", filename);
 	} else {
-		cdptr = (CD*)malloc(sizeof(CD));					// alloc some memory
-		r = fseek(f, cdnum * sizeof(CD), SEEK_SET);			// seek to cdnum record (0 offset is first)
-		r = fread(cdptr, sizeof(CD), 1, f);					// read cdnum record into memory
-		readcd_data();										// get some data for this record
-		strcpy(cdptr->name, tempcd.name);					// modify cd data before writing back to disk
+        // alloc some memory
+		cdptr = (CD*)malloc(sizeof(CD));
+
+        // seek to cdnum record (0 offset is first)
+		r = fseek(file_pointer, cdnum * sizeof(CD), SEEK_SET);
+
+        // read cdnum record into memory
+		r = fread(cdptr, sizeof(CD), 1, file_pointer);
+
+        // get some data for this record
+		readcd_data();
+
+        // modify cd data before writing back to disk
+		strcpy(cdptr->name, tempcd.name);
 		strcpy(cdptr->artist, tempcd.artist);
 		cdptr->trackcount = tempcd.trackcount;
 		cdptr->rating = tempcd.rating;
-		r = fseek(f, cdnum * sizeof(CD), SEEK_SET);			// seek again to cdnum record
-		r = fwrite(cdptr, sizeof(CD), 1, f);				// write the modified record out
-		fclose(f);
+
+        // seek again to cdnum record
+		r = fseek(file_pointer, cdnum * sizeof(CD), SEEK_SET);
+
+        // write the modified record out
+		r = fwrite(cdptr, sizeof(CD), 1, file_pointer);
+
+        // Close file pointer
+		fclose(file_pointer);
 	}
 }
 
@@ -158,22 +188,28 @@ void modify_cd(char *filename) {
 	int cdnum;
 	int slen;
 	int error = 0;
-	
+
 	printf("Enter CD Number to modify:\n> ");
+
 	slen = readln(input);
+
+    // If CD number was typed.
 	if (slen > 0) {
-		if (input[0] == '0') {		// allow 0 as a valid index
+        // allow 0 as a valid index
+		if (input[0] == '0') {
 			cdnum = 0;
 		} else {
-			cdnum = atoi(input);	// otherwise atoi returns 0 on conversion error
+            // otherwise atoi returns 0 on conversion error
+			cdnum = atoi(input);
+
 			if (cdnum  == 0) {
 				error = 1;
 			}
 		}
-
 	} else {
 		error = 1;
 	};
+
 	if (error) {
 		printf("Error: invalid number!\n");
 	} else if ((cdnum < 0) || (cdnum > (number_of_records_in_db(filename) - 1))) {
@@ -185,60 +221,84 @@ void modify_cd(char *filename) {
 
 // append new cd record to end of file
 void add_cd(char *filename) {
-	FILE *f;
-	
+	FILE *file_pointer;
+
 	readcd_data();
-	f = fopen(filename, "ab");								// open file in append mode
-	if (f == 0) {
+
+    // open file in append mode
+	file_pointer = fopen(filename, "ab");
+
+    // If files does not exists or wrong permissions.
+	if (file_pointer == 0) {
 		printf( "Cannot write to file: %s\n", filename);
 	} else {
-		fwrite(&tempcd, sizeof(CD), 1, f);					// write data saved in tempcd at end of file
-		fclose(f);
+        // write data saved in tempcd at end of file
+		fwrite(&tempcd, sizeof(CD), 1, file_pointer);
+
+        // Close file pointer.
+		fclose(file_pointer);
 	}
 }
 
 // save in-memory data (cd_collection) to file on disk
-void save_cdcollection(char *filename) {
+void save_cdcollection(char *filename)
+{
 	// note cdarraylen was initialized when data was last loaded from disk
 	// it saves the number of records loaded into memory
-	// EXERCISE: 	Test if the file already exists on disk and prompt user 
+	// EXERCISE: 	Test if the file already exists on disk and prompt user
 	//  			to ask whether it should be overwritten
-	FILE *f;
+
+    // open file for binary write
+    FILE *file_pointer = fopen(filename, "wb");
+
 	int count;
-	
-	f = fopen(filename, "wb");										// open file for binary write
-	if (f == 0) {
+
+	if (file_pointer == 0) {
 		printf( "Cannot write to file: %s\n", filename);
 	} else {
-		count =	fwrite(cd_collection, sizeof(CD), cdarraylen, f);	// write it out
+        // Write it out
+		count =	fwrite(cd_collection, sizeof(CD), cdarraylen, file_pointer);
+
 		if (count != cdarraylen) {
 			printf("initialization failed\n");
 		} else {
 			printf("saved\n");
 		}
-		fclose(f);
+
+		fclose(file_pointer);
 	}
 }
 
 // load cd db into cd_collection array in memory
-static int load_cdcollection(char *filename) {
-	FILE *f;
+static int load_cdcollection(char *filename)
+{
+	FILE *file_pointer;
 	int numrecs;
 	int numrecsread = 0;
-	
+
 	numrecs = number_of_records_in_db(filename);
-	f = fopen(filename, "rb");
-	if (f == 0) {
+
+	file_pointer = fopen(filename, "rb");
+
+	if (file_pointer == 0) {
 		printf( "Cannot read file: %s\n", filename);
 	} else {
-		cd_collection = realloc(cd_collection, sizeof(CD) * numrecs);		// alloc some memory
-		numrecsread = fread(cd_collection, sizeof(CD), numrecs, f);			// read all recs into memory
+        // alloc some memory
+		cd_collection = realloc(cd_collection, sizeof(CD) * numrecs);
+
+        // Read all records into memory
+		numrecsread = fread(cd_collection, sizeof(CD), numrecs, file_pointer);
+
 		if (numrecsread != numrecs) {
 			printf("Error: %d records in file but %d were read into memory", numrecs, numrecsread);
 		}
-		fclose(f);
+
+		fclose(file_pointer);
 	}
-	cdarraylen = numrecsread; // used when saving: I need to know the number of records to be saved
+
+    // It is used when saving, cause I need to know the number of records to be saved.
+	cdarraylen = numrecsread;
+
 	return numrecsread;
 }
 
@@ -247,10 +307,19 @@ void display_cdcollection(char *filename) {
 	int i;
 	int numrecs;
 	CD thiscd;
-	
+
 	numrecs = load_cdcollection(filename);
 	for (i = 0; i < numrecs; i++) {
 		thiscd = cd_collection[i];
-		printf("%d CD #%d: '%s' by %s has %d tracks. My rating = %d\n", sizeof(CD), i, thiscd.name, thiscd.artist, thiscd.trackcount, thiscd.rating);
+
+		printf(
+            "%d CD #%d: '%s' by %s has %d tracks. My rating = %d\n",
+            (int) sizeof(CD),
+            i,
+            thiscd.name,
+            thiscd.artist,
+            thiscd.trackcount,
+            thiscd.rating
+        );
 	}
 }

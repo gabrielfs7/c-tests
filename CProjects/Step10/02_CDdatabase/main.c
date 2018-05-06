@@ -19,14 +19,18 @@ char getcommand()
     return command[0];
 }
 
-int main(int argc, char **argv) {
+int main(int argc, char **argv)
+{
 	int keepgoing = 1;
 
+    // Create standard CD collection
 	create_cdcollection();
+
 	while( keepgoing ) {
 		printf("\nEnter a command or 'q' to quit.");
 		printf("\nCommands: 'a'=add record, 'd'=display records, 'm'=modify record");
 		printf("\n          'n'=number of records, 's'=save backup (from memory)\n> ");
+
 		switch(getcommand()) {
 			case 'a':
 				printf( "Add record\n");
@@ -57,5 +61,6 @@ int main(int argc, char **argv) {
 				break;
 		}
 	}
+
 	return 0;
 }

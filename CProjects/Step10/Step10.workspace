@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CodeLite_Workspace Name="Step10" Database="./Step10.tags" Version="10.0.0">
-  <Project Name="01_ReadFile" Path="01_ReadFile/01_ReadFile.project" Active="Yes"/>
-  <Project Name="02_CDdatabase" Path="02_CDdatabase/02_CDdatabase.project" Active="No"/>
+  <Project Name="01_ReadFile" Path="01_ReadFile/01_ReadFile.project" Active="No"/>
+  <Project Name="02_CDdatabase" Path="02_CDdatabase/02_CDdatabase.project" Active="Yes"/>
   <BuildMatrix>
     <WorkspaceConfiguration Name="Debug" Selected="yes">
       <Project Name="01_ReadFile" ConfigName="Debug"/>
